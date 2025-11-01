@@ -49,7 +49,7 @@ Implements user authentication and lead management — create, view, and claim l
 
    ```
 
-2. **Clone the Repository**
+2. **Add env file **
 
    ```.env
    PORT=7300
@@ -67,14 +67,18 @@ Implements user authentication and lead management — create, view, and claim l
 4. **Postman Collection**
    A ready-to-use Postman collection is available in the /postman folder:
    postman/FastorCRM.postman_collection.json
+   <br>
    It includes all endpoints with placeholders and examples, so anyone can easily test:
-
-   Token → from login response (fastorToken)
-   Lead ID → from unclaimed leads response
+   <br>
+   Token: from login response (fastorToken)
+   <br>
+   Lead Id: from unclaimed leads response
 
 ## 📫 Contact
 
 - GitHub: [safeer997](https://github.com/safeer997)
 - Email: safeeralam997@gmail.com
+
+```
 
 ```
