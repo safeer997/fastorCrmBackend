@@ -21,7 +21,7 @@ export async function register(req, res) {
       });
     }
 
-    const hashedPassword = await bcrypt.hash(password , 10);
+    const hashedPassword = await bcrypt.hash(password, 10);
 
     const user = {
       name: name,
@@ -96,6 +96,22 @@ export async function login(req, res) {
       success: true,
       message: 'login successful',
       fastorToken: fastorToken,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({
+      success: false,
+      message: 'internal server error',
+    });
+  }
+}
+
+export async function logout(req, res) {
+  try {
+    return res.status(200).json({
+      success: true,
+      message:
+        'User logged out successfully.Remove token from client side.',
     });
   } catch (error) {
     console.log(error);
