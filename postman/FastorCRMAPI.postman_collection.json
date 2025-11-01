@@ -1,0 +1,186 @@
+{
+	"info": {
+		"_postman_id": "92172d33-92d4-4ff4-b1d3-8bf8bd268d99",
+		"name": "Fastor CRM API",
+		"description": "### 🧾 **Collection Description: Fastor CRM API**\n\nThis Postman collection is designed to test the **Fastor CRM Backend** built using **Node.js, Express, and MongoDB**.\n\nIt includes all key REST APIs required as per the assignment specification — from employee/user authentication to lead management.\n\nEach request contains clear placeholders and examples, so any tester can run them easily without setup complexity.\n\n---\n\n### ⚙️ **Usage Instructions**\n\n1. **Base URL:**  \n    `http://localhost:7300/api`  \n    (Change the port or base URL if needed.)\n    \n2. **Authentication Flow:**\n    \n    - Start with **Register User** → creates a new user.\n        \n    - Then **Login User** → copy the `fastorToken` from the response.\n        \n    - For protected routes (like claiming or fetching leads),  \n        paste that token into **Authorization → Bearer Token**.\n        \n3. **Lead Flow:**\n    \n    - **Create Lead** → simulates public enquiry form (no auth needed).\n        \n    - **Get Unclaimed Leads** → lists all public leads available for claiming.\n        \n    - **Claim Lead** → assign a specific lead to the logged-in user (requires `leadId`).\n        \n    - **Get My Leads** → fetch leads claimed by the current logged-in user.\n        \n4. **Placeholders Provided:**\n    \n    - → Replace with token from Login response.\n        \n    - → Replace with the `_id` value from a lead document (e.g. from Unclaimed Leads).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35328687"
+	},
+	"item": [
+		{
+			"name": "User Register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Test User1\",\n  \"email\": \"testuser1@example.com\",\n  \"password\": \"123456\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:7300/api/user/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7300",
+					"path": [
+						"api",
+						"user",
+						"register"
+					]
+				},
+				"description": "Registers a new user (employee/counselor).\nYou can change name or email before sending.\nIf successful, it returns a success message and created user details."
+			},
+			"response": []
+		},
+		{
+			"name": "User Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"email\": \"testuser1@example.com\",\n  \"password\": \"123456\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:7300/api/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7300",
+					"path": [
+						"api",
+						"user",
+						"login"
+					]
+				},
+				"description": "Logs in an existing user.\nCopy the 'fastorToken' value from the response.\nYou will need to paste this token into the Authorization header of the protected routes."
+			},
+			"response": []
+		},
+		{
+			"name": "Create Lead (Public)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Amit Singh\",\n  \"email\": \"amit@example.com\",\n  \"phone\": \"9876543210\",\n  \"courseInterest\": \"MERN Stack\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:7300/api/lead/createlead",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7300",
+					"path": [
+						"api",
+						"lead",
+						"createlead"
+					]
+				},
+				"description": "Public endpoint to create a new lead/enquiry.\nNo authentication required.\nCreates a new unclaimed lead in the system."
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Unclaimed Leads",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <PASTE_TOKEN_HERE>"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:7300/api/lead/unclaimed",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7300",
+					"path": [
+						"api",
+						"lead",
+						"unclaimed"
+					]
+				},
+				"description": "Fetch all unclaimed leads.\nPaste your JWT token from the login response in place of <PASTE_TOKEN_HERE>.\nCopy the _id of any unclaimed lead for use in the next API."
+			},
+			"response": []
+		},
+		{
+			"name": "Claim Lead",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <PASTE_TOKEN_HERE>"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:7300/api/lead/claimlead/<LEAD_ID_HERE>",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7300",
+					"path": [
+						"api",
+						"lead",
+						"claimlead",
+						"<LEAD_ID_HERE>"
+					]
+				},
+				"description": "Allows a counselor to claim a lead.\nReplace <LEAD_ID_HERE> with the _id of an unclaimed lead.\nPaste your token in <PASTE_TOKEN_HERE>.\nOnce claimed, that lead will no longer appear in the unclaimed list."
+			},
+			"response": []
+		},
+		{
+			"name": "Get My Claimed Leads",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <PASTE_TOKEN_HERE>"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:7300/api/lead/userleads",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7300",
+					"path": [
+						"api",
+						"lead",
+						"userleads"
+					]
+				},
+				"description": "Fetch all leads claimed by the currently logged-in user.\nPaste your token in <PASTE_TOKEN_HERE>.\nYou should see only the leads you have personally claimed."
+			},
+			"response": []
+		}
+	]
+}
