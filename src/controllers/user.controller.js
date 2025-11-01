@@ -44,7 +44,7 @@ export async function register(req, res) {
     };
     return res.status(201).json({
       success: true,
-      message: 'user created successfully',
+      message: 'user created successfully, please Login',
       data: data,
     });
   } catch (error) {
