@@ -64,6 +64,13 @@ export async function claimLead(req, res) {
   const userId = req.user.id;
 
   try {
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).json({
+        success: false,
+        message: 'invalid id format',
+      });
+    }
+
     const lead = await Lead.findById(id);
 
     if (!lead) {
