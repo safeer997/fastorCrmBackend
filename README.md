@@ -5,6 +5,15 @@ Implements user authentication and lead management — create, view, and claim l
 
 ---
 
+### 🌐 Live Application
+
+- **Live Demo:** [https://fastorcrmfrontend.onrender.com/](https://fastorcrmfrontend.onrender.com/)
+- **Submit Lead (Public):** [https://fastorcrmfrontend.onrender.com/submit-lead](https://fastorcrmfrontend.onrender.com/submitlead)
+
+✨ Ready to use! No setup required — just visit the links and start managing leads!
+
+---
+
 ## 📸 Screenshots
 
 <div align="center" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; margin-bottom: 40px;">
