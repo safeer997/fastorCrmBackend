@@ -2,6 +2,8 @@
 
 A lightweight **CRM backend** built using **Node.js, Express, and MongoDB**.  
 Implements user authentication and lead management — create, view, and claim leads — as per the Fastor Node.js Developer assignment.
+<br>
+Frontend Repo Link : [Fastor CRM Frontend](https://github.com/safeer997/fastorCrmFrontend)
 
 ---
 
